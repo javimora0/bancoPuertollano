@@ -1,12 +1,27 @@
-function cargarDatos() {
-    document.getElementById("nombre").value = persona.nombre;
+var persona = {
+    name: "Francisco",
+    apellido1: "Alia",
+    apellido2: "Hernandez",
+    nacionalidad: "Española",
+    iban : "ES32 3244 4324 2534 234124124",
+    saldo : 0
+  };
+
+function cargarDatos() {  
+    document.getElementById("nombre").value = persona.name;
     document.getElementById("apellido1").value = persona.apellido1;
     document.getElementById("apellido2").value = persona.apellido2;
     document.getElementById("nacionalidad").value = persona.nacionalidad;
-    document.getElementById("ibanInput").value = persona.iban;
-    document.getElementById("saldo").value = persona.saldo;
+   
     menu = document.getElementById("menu").innerHTML;
   }
+
+  function cargarInfo(){
+    
+    document.getElementById("ibanInput").value = persona.iban;
+    document.getElementById("saldo").value = persona.saldo;
+  }
+
   
   function cargarCabecera(dest) {
     document.getElementById(dest).innerHTML =
@@ -47,13 +62,4 @@ botonIngresar.addEventListener("click", function () {
 
 })
 
-
-var persona = {
-  nombre: "Francisco",
-  apellido1: "Alia",
-  apellido2: "Hernandez",
-  nacionalidad: "Española",
-  iban: "ES21 1465 0100 72 2030876293",
-  saldo: 500
-};
 
