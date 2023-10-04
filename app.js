@@ -1,3 +1,36 @@
+const botonRetirar = document.getElementById('botonRetirar')
+const botonIngresar = document.getElementById('botonRetirar')
+const saldoRetirado = document.getElementById('saldoRetirar')
+const saldoIngresado = document.getElementById('saldoIngresarInput')
+
+const mssg = document.getElementById('mensaje');
+const saldo = document.getElementById('saldo')
+
+botonRetirar.addEventListener("click", function () {
+    if (saldoRetirado.value <= 0) {
+        mssg.textContent = 'El saldo a retirar debe ser un numero positivo'
+        mssg.style.color = 'red';
+    } if (saldoRetirado.value > saldo.value) {
+        mssg.textContent = 'El saldo a retirar es mayo que el saldo disponible'
+        mssg.style.color = 'red';
+    }else {
+        mssg.textContent = 'Ha retirado usted ' + saldoRetirado.value + '€'
+        mssg.style.color = 'Green';
+    }
+
+})
+
+botonIngresar.addEventListener("click", function () {
+    if (saldoIngresado.value <= 0) {
+        mssg.textContent = 'El saldo a ingresar debe ser mayor que 0'
+        mssg.style.color = 'red';
+    }else{
+        mssg.textContent = 'El saldo a ingresar debe ser mayor que 0'
+        mssg.style.color = 'red';
+    }
+
+})
+
 function cargarDatos() {
   document.getElementById("nombre").value = persona.nombre;
   document.getElementById("apellido1").value = persona.apellido1;
@@ -19,3 +52,4 @@ var persona = {
   iban: "ES21 1465 0100 72 2030876293",
   saldo: 500
 };
+
