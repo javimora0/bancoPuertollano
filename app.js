@@ -40,8 +40,9 @@ botonIngresar.addEventListener("click", function () {
         mssg.textContent = 'El saldo a ingresar debe ser mayor que 0'
         mssg.style.color = 'red';
     }else{
-        mssg.textContent = 'El saldo a ingresar debe ser mayor que 0'
-        mssg.style.color = 'red';
+        mssg.textContent = 'El saldo se ha ingresado correctamente'
+        mssg.style.color = 'Green';
+        persona.saldo += saldoIngresado.value
     }
 
 })
