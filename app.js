@@ -14,7 +14,10 @@ function cargarCabecera(dest) {
 }
 
 const botonRetirar = document.getElementById('botonRetirar')
+const botonIngresar = document.getElementById('botonRetirar')
 const saldoRetirado = document.getElementById('saldoRetirar')
+const saldoIngresado = document.getElementById('saldoIngresarInput')
+
 const mssg = document.getElementById('mensaje');
 const saldo = document.getElementById('saldo')
 
@@ -26,7 +29,18 @@ botonRetirar.addEventListener("click", function () {
         mssg.textContent = 'El saldo a retirar es mayo que el saldo disponible'
         mssg.style.color = 'red';
     }else {
-        mssg.textContent = 'El saldo a retirar es mayo que el saldo disponible'
+        mssg.textContent = 'Ha retirado usted ' + saldoRetirado.value + '€'
+        mssg.style.color = 'Green';
+    }
+
+})
+
+botonIngresar.addEventListener("click", function () {
+    if (saldoIngresado.value <= 0) {
+        mssg.textContent = 'El saldo a ingresar debe ser mayor que 0'
+        mssg.style.color = 'red';
+    }else{
+        mssg.textContent = 'El saldo a ingresar debe ser mayor que 0'
         mssg.style.color = 'red';
     }
 
