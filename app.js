@@ -26,7 +26,7 @@ botonRetirar.addEventListener("click", function () {
         mssg.textContent = 'El saldo a retirar debe ser un numero positivo'
         mssg.style.color = 'red';
     } if (saldoRetirado.value > saldo.value) {
-        mssg.textContent = 'El saldo a retirar es mayo que el saldo disponible'
+        mssg.textContent = 'El saldo a retirar tiene que ser mayor que el saldo disponible'
         mssg.style.color = 'red';
     }else {
         mssg.textContent = 'Ha retirado usted ' + saldoRetirado.value + '€'
