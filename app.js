@@ -14,7 +14,7 @@ function cargarDatos() {
   }
 
 const botonRetirar = document.getElementById('botonRetirar')
-const botonIngresar = document.getElementById('botonRetirar')
+const botonIngresar = document.getElementById('botonIngresar')
 const saldoRetirado = document.getElementById('saldoRetirar')
 const saldoIngresado = document.getElementById('saldoIngresarInput')
 
@@ -45,7 +45,6 @@ botonIngresar.addEventListener("click", function () {
     }
 
 })
-
 
 
 var persona = {
