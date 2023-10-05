@@ -1,32 +1,16 @@
-var persona = {
-    name: "Fernando",
-    apellido1: "Aranzabe",
-    apellido2: "Php",
-    nacionalidad: "Española",
-    iban : "ES32 3244 4324 2534 234124124",
-    saldo : 500
-  };
-
-function cargarDatos() {  
-    document.getElementById("nombre").value = persona.name;
-    document.getElementById("apellido1").value = persona.apellido1;
-    document.getElementById("apellido2").value = persona.apellido2;
-    document.getElementById("nacionalidad").value = persona.nacionalidad;
-   
-    menu = document.getElementById("menu").innerHTML;
-  }
-
   function cargarInfo(){
-    
-    document.getElementById("ibanInput").value = persona.iban;
-    document.getElementById("saldo").value = persona.saldo;
+    var persona = localStorage.getItem("persona")
+    var p = JSON.parse(persona)
+
+    document.getElementById("ibanInput").value = p.cuenta.iban;
+    document.getElementById("saldo").value = p.cuenta.saldo;
   }
 
   
-  function cargarCabecera(dest) {
-    document.getElementById(dest).innerHTML =
-      '   <h1>BancoPuertollano</h1>    <ul>        <li><a href="index.html">Inicio</a></li>        <li><a href="infoCuenta.html">Informaci&#243;n Cuenta</a></li>             <li><a href="tarjetas.html">Tarjetas</a></li>    </ul>';
-  }
+//   function cargarCabecera(dest) {
+//     document.getElementById(dest).innerHTML =
+//       '   <h1>BancoPuertollano</h1>    <ul>        <li><a href="index.html">Inicio</a></li>        <li><a href="infoCuenta.html">Informaci&#243;n Cuenta</a></li>             <li><a href="tarjetas.html">Tarjetas</a></li>    </ul>';
+//   }
 
 const botonRetirar = document.getElementById('botonRetirar')
 const botonIngresar = document.getElementById('botonIngresar')
