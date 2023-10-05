@@ -144,3 +144,4 @@ botonModificarDatos.addEventListener("click", function () {
     objetoPersona.nac = nac;
   }
 });
+
