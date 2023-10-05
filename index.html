@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>BancoPuertollano</title>
     <link rel="stylesheet" type="text/css" href="estilos.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="menu">
-        <h1>BancoPuertollano</h1>
-        <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="infoCuenta.html" onclick="navegar()">Información Cuenta</a></li>
-            <li><a href="tarjetas.html" onclick="navegar()">Tarjetas</a></li>
-        </ul>
+      <h1>BancoPuertollano</h1>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li>
+          <a href="infoCuenta.html" onclick="navegar()">Información Cuenta</a>
+        </li>
+        <li><a href="tarjetas.html" onclick="navegar()">Tarjetas</a></li>
+      </ul>
     </div>
     <h2>Datos Cliente</h2>
     <label><b>Nombre</b></label>
-    <input id="nombre" type="text"><br>
+    <input id="nombre" type="text" /><br />
     <label><b>Primer Apellido</b></label>
-    <input id="apellido1" type="text"/><br />
-    
+    <input id="apellido1" type="text" /><br />
     <label><b>Segundo Apellido</b></label>
-    <input id="apellido2" type="text"><br>
+    <input id="apellido2" type="text" /><br />
     <label><b>Nacionalidad</b></label>
-    <input id="nacionalidad" type="nacionalidad"><br>
+    <input id="nacionalidad" type="nacionalidad" /><br />
     <button id="botonDatos">Modificar Datos</button>
-    <script src="appIndex.js">
-    </script>
+    <p id="avisoCorrecto"></p>
+    <p id="avisoNombre"></p>
+    <p id="avisoApe1"></p>
+    <p id="avisoApe2"></p>
+    <p id="avisoNacionalidad"></p>
+    <script src="appIndex.js"></script>
     <script>
+        cargarInfo();
         cargarDatos();
     </script>
-</body>
+  </body>
 </html>
+
