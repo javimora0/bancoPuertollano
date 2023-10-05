@@ -1,20 +1,16 @@
-
-
-
-
   function cargarInfo(){
     var persona = localStorage.getItem("persona")
     var p = JSON.parse(persona)
 
-    document.getElementById("ibanInput").value = p.Cuenta;
-    document.getElementById("saldo").value = co.saldo;
+    document.getElementById("ibanInput").value = p.cuenta.iban;
+    document.getElementById("saldo").value = p.cuenta.saldo;
   }
 
   
-  function cargarCabecera(dest) {
-    document.getElementById(dest).innerHTML =
-      '   <h1>BancoPuertollano</h1>    <ul>        <li><a href="index.html">Inicio</a></li>        <li><a href="infoCuenta.html">Informaci&#243;n Cuenta</a></li>             <li><a href="tarjetas.html">Tarjetas</a></li>    </ul>';
-  }
+//   function cargarCabecera(dest) {
+//     document.getElementById(dest).innerHTML =
+//       '   <h1>BancoPuertollano</h1>    <ul>        <li><a href="index.html">Inicio</a></li>        <li><a href="infoCuenta.html">Informaci&#243;n Cuenta</a></li>             <li><a href="tarjetas.html">Tarjetas</a></li>    </ul>';
+//   }
 
 const botonRetirar = document.getElementById('botonRetirar')
 const botonIngresar = document.getElementById('botonIngresar')
