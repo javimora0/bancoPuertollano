@@ -1,25 +1,13 @@
-var persona = {
-    name: "Fernando",
-    apellido1: "Aranzabe",
-    apellido2: "Php",
-    nacionalidad: "Española",
-    iban : "ES32 3244 4324 2534 234124124",
-    saldo : 500
-  };
 
-function cargarDatos() {  
-    document.getElementById("nombre").value = persona.name;
-    document.getElementById("apellido1").value = persona.apellido1;
-    document.getElementById("apellido2").value = persona.apellido2;
-    document.getElementById("nacionalidad").value = persona.nacionalidad;
-   
-    menu = document.getElementById("menu").innerHTML;
-  }
+
+
 
   function cargarInfo(){
-    
-    document.getElementById("ibanInput").value = persona.iban;
-    document.getElementById("saldo").value = persona.saldo;
+    var persona = localStorage.getItem("persona")
+    var p = JSON.parse(persona)
+
+    document.getElementById("ibanInput").value = p.Cuenta;
+    document.getElementById("saldo").value = co.saldo;
   }
 
   
