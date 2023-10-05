@@ -57,19 +57,19 @@ function cargarDatos() {
         persona = new Persona("Fernando", "Arabzabe", "php", "Española");
         cuenta = new Cuenta("302583520349", 500);
         persona.addCuenta(cuenta);
+    }else{
+        cuenta = new Cuenta("678909876564", 500);
+        var tarjeta1 = new tarjeta(312342354254325, true)
+        var tarjeta2 = new tarjeta(324235786567672, true)
+        cuenta.addTarjeta(tarjeta1)
+        cuenta.addTarjeta(tarjeta2)
+        persona.addCuenta(cuenta)
     }
 
     document.getElementById("nombre").value = persona.nombre;
     document.getElementById("apellido1").value = persona.apellido1;
     document.getElementById("apellido2").value = persona.apellido2;
     document.getElementById("nacionalidad").value = persona.nacionalidad;
-
-    cuenta = new Cuenta("302583520349", 500);
-    var tarjeta1 = new tarjeta(312342354254325, true)
-    var tarjeta2 = new tarjeta(324235786567672, true)
-    cuenta.addTarjeta(tarjeta1)
-    cuenta.addTarjeta(tarjeta2)
-    persona.addCuenta(cuenta)
 }
 
 
@@ -92,5 +92,5 @@ botonModificarDatos.addEventListener("click", function () {
 function navegar() {
     var co = JSON.stringify(persona);
     localStorage.setItem("persona", co)
-    // window.location.href = 'index.html'
+    window.location.href = 'infoCuenta.html'
 }
