@@ -54,9 +54,6 @@ function navegar() {
 function cargarInfo() {
   var persona = localStorage.getItem("persona");
   objetoPersona = JSON.parse(persona);
-
-  document.getElementById("ibanInput").value = p.cuenta.iban;
-  document.getElementById("saldo").value = p.cuenta.saldo;
 }
 
 function cargarDatos() {
@@ -64,14 +61,13 @@ function cargarDatos() {
     objetoPersona = new Persona("Fernando", "Arabzabe", "php", "Española");
     cuenta = new Cuenta("302583520349", 500);
     objetoPersona.addCuenta(cuenta);
-  } else {
-    cuenta = new Cuenta("302583520349", 500);
     var tarjeta1 = new tarjeta(312342354254325, true);
     var tarjeta2 = new tarjeta(324235786567672, true);
     cuenta.addTarjeta(tarjeta1);
     cuenta.addTarjeta(tarjeta2);
     objetoPersona.addCuenta(cuenta);
   }
+  
 
   document.getElementById("nombre").value = objetoPersona.nombre;
   document.getElementById("apellido1").value = objetoPersona.apellido1;
