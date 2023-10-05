@@ -1,10 +1,10 @@
 var persona = {
-    name: "Francisco",
-    apellido1: "Alia",
-    apellido2: "Hernandez",
+    name: "Fernando",
+    apellido1: "Aranzabe",
+    apellido2: "Php",
     nacionalidad: "Española",
     iban : "ES32 3244 4324 2534 234124124",
-    saldo : 0
+    saldo : 500
   };
 
 function cargarDatos() {  
