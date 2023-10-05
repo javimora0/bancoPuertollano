@@ -13,8 +13,8 @@ function cargarInfo(){
     localStorage.setItem("persona", objetoPasado)
 }
   
-  function cargarCabecera(dest) {
-    document.getElementById(dest).innerHTML =
+  function cargarCabecera() {
+    document.getElementById("menu").innerHTML =
       '   <h1>BancoPuertollano</h1>    <ul>        <li><a href="index.html" onclick="navegar()">Inicio</a></li>        <li><a href="infoCuenta.html" onclick="navegar()">Informaci&#243;n Cuenta</a></li>             <li><a href="tarjetas.html" onclick="navegar()">Tarjetas</a></li>    </ul>';
   }
 
@@ -74,5 +74,3 @@ botonRetirar.addEventListener("click", function () {
     }
     saldoRetirado.value = saldoRetirado.defaultValue
 })
-
-
