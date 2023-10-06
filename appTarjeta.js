@@ -9,35 +9,47 @@ function cargarInfo() {
     var persona = localStorage.getItem("persona")
     objetoPersona = JSON.parse(persona)
     parseInt(objetoPersona.cuenta.saldo)
-    document.getElementById("ibanInput").value = objetoPersona.cuenta.iban;
-    document.getElementById("saldo").value = objetoPersona.cuenta.saldo;
+}
+
+
+var datos = []
+
+
+class Dato {
+    iban = ''
+    nTarjeta = 0
+    activa = false
 }
 
 function generarTabla() {
-    // Ejemplo de datos
-    var datos = [
-        { cuenta: "1234567890", tarjeta: "23423421234", activa: true },
 
-        { cuenta: "9876543210", tarjeta: "2342342345678", activa: false }
-    ];
+    var ibanAuxiliar = objetoPersona.cuenta.iban
 
-    for (let index = 0; index < objetoPersona.cuenta.tarjetas.length -1; index++) {
-        datos[index].cuenta.push(objetoPersona.cuenta.iban)
-        datos[index].tarjeta.push(objetoPersona.cuenta.tarjetas[index].numero)
-        datos[index].activa.push(objetoPersona.persona.cuenta.tarjetas[index].activa)
+    for (let index = 0; index < objetoPersona.cuenta.tarjetas.length; index++) {
+        var dato1 = new Dato();
+        var nTarjeta = objetoPersona.cuenta.tarjetas[index].numero
+        var activa = objetoPersona.cuenta.tarjetas[index].activa
+        dato1.iban = ibanAuxiliar
+        dato1.nTarjeta = nTarjeta
+        dato1.activa = activa
+        datos[index] = dato1
     }
+    console.log(objetoPersona)
 
-    // Obtén la referencia a la tabla
+
+
+
+
     var tabla = document.getElementById("tablaCuentas");
 
-    // Agrega filas a la tabla basadas en los datos
+
     datos.forEach(function (dato) {
         var fila = document.createElement("tr");
         fila.innerHTML = `
-                <td>${dato.cuenta}</td>
-                <td>${dato.tarjeta}</td>
-                <td>${dato.activa ? "Sí" : "No"}</td>
-            `;
+                 <td>${dato.iban}</td>
+                 <td>${dato.nTarjeta}</td>
+                 <td>${dato.activa ? "Sí" : "No"}</td>
+             `;
         tabla.appendChild(fila);
     });
 }
