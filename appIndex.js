@@ -40,6 +40,7 @@ class tarjeta {
     this.numero = numero;
     this.activa = activa;
   }
+
 }
 
 var objetoPersona;
@@ -60,9 +61,9 @@ function cargarDatos() {
   if (objetoPersona == null) {
     objetoPersona = new Persona("Fernando", "Arabzabe", "php", "Española");
     cuenta = new Cuenta("302583520349", 500);
-    objetoPersona.addCuenta(cuenta);
     var tarjeta1 = new tarjeta(312342354254325, true);
     var tarjeta2 = new tarjeta(324235786567672, true);
+    objetoPersona.addCuenta(cuenta);
     cuenta.addTarjeta(tarjeta1);
     cuenta.addTarjeta(tarjeta2);
     objetoPersona.addCuenta(cuenta);

@@ -6,9 +6,31 @@
 </head>
 <body>
     <div id="menu">
-       
     </div>
-    
+    <h1>Tarjetas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Número de Cuenta</th>
+                <th>Número de Tarjeta</th>
+                <th>Activa</th>
+            </tr>
+        </thead>
+        <tbody id="tablaCuentas">
+            <!-- Aquí se agregarán las filas dinámicamente -->
+        </tbody>
+    </table>
+    <label for="text"><b>Nombre:</b></label>
+    <input type="text" placeholder="Numero de tajerta"><br>
+    <label for="cvv"><b>CVV:</b></label>
+    <input type="text" placeholder="CVV"><br>
+    <label for="text"><b>Activa:</b></label>
+    <button>Guardar Tarjeta</button>
 </body>
-
+    <script src="appTarjeta.js"></script> 
+    <script>
+        cargarCabecera()
+        cargarInfo()
+        generaTabla()
+    </script>
 </html>
