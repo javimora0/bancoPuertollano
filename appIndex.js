@@ -138,7 +138,7 @@ botonModificarDatos.addEventListener("click", function () {
     objetoPersona.nombre = nombre;
     objetoPersona.apellido1 = ape1;
     objetoPersona.apellido2 = ape2;
-    objetoPersona.nac = nac;
+    objetoPersona.nacionalidad = nac;
   }
 });
 
