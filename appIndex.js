@@ -32,23 +32,27 @@ class Cuenta {
   }
 }
 
-class tarjeta {
+class Tarjeta {
   numero = 0;
   activa = false;
+  cvv = 0;
 
-  constructor(numero, activa) {
+  constructor(numero, activa, cvv) {
     this.numero = numero;
     this.activa = activa;
+    this.cvv = cvv;
   }
+
 }
 
 var objetoPersona;
 var cuenta;
+var tarjeta1
+var tarjeta2
 
 function navegar() {
   var objetoPasado = JSON.stringify(objetoPersona);
   localStorage.setItem("persona", objetoPasado);
-  // window.location.href = 'index.html'
 }
 
 function cargarInfo() {
@@ -58,11 +62,10 @@ function cargarInfo() {
 
 function cargarDatos() {
   if (objetoPersona == null) {
-    objetoPersona = new Persona("Fernando", "Arabzabe", "php", "Española");
+    objetoPersona = new Persona("Fernando", "Aranzabe", "Servidor", "Turca");
     cuenta = new Cuenta("302583520349", 500);
-    objetoPersona.addCuenta(cuenta);
-    var tarjeta1 = new tarjeta(312342354254325, true);
-    var tarjeta2 = new tarjeta(324235786567672, true);
+    tarjeta1 = new Tarjeta(342342354254325, false, 758);
+    tarjeta2 = new Tarjeta(374235786567672, true, 345);
     cuenta.addTarjeta(tarjeta1);
     cuenta.addTarjeta(tarjeta2);
     objetoPersona.addCuenta(cuenta);
@@ -78,10 +81,10 @@ function cargarDatos() {
 var botonModificarDatos = document.getElementById("botonDatos");
 
 botonModificarDatos.addEventListener("click", function () {
-  var nombre = document.getElementById("nombre").value;
-  var ape1 = document.getElementById("apellido1").value;
-  var ape2 = document.getElementById("apellido2").value;
-  var nac = document.getElementById("nacionalidad").value;
+  var nombre = document.getElementById("nombre");
+  var ape1 = document.getElementById("apellido1");
+  var ape2 = document.getElementById("apellido2");
+  var nac = document.getElementById("nacionalidad");
   var avisoCorrecto = document.getElementById("avisoCorrecto");
   var avisoNombre = document.getElementById("avisoNombre");
   var avisoApe1 = document.getElementById("avisoApe1");
@@ -99,7 +102,7 @@ botonModificarDatos.addEventListener("click", function () {
   var ape2Correcto = false;
   var nacCorrecto = false;
 
-  if (nombre.length < 3 || nombre.length > 20) {
+  if (nombre.value.length < 3 || nombre.value.length > 20) {
     avisoNombre.textContent =
       "El nombre debe contener entre 3 y 20 caracteres.";
     avisoNombre.style.color = "red";
@@ -107,7 +110,7 @@ botonModificarDatos.addEventListener("click", function () {
     nombreCorrecto = true;
   }
 
-  if (ape1.length < 3 || ape1.length > 20) {
+  if (ape1.value.length < 3 || ape1.value.length > 20) {
     avisoApe1.textContent =
       "El primer apellido debe contener entre 3 y 20 caracteres.";
     avisoApe1.style.color = "red";
@@ -115,7 +118,7 @@ botonModificarDatos.addEventListener("click", function () {
     ape1Correcto = true;
   }
 
-  if (ape2.length < 3 || ape2.length > 20) {
+  if (ape2.value.length < 3 || ape2.value.length > 20) {
     avisoApe2.textContent =
       "El segundo apellido debe contener entre 3 y 20 caracteres.";
     avisoApe2.style.color = "red";
@@ -123,7 +126,7 @@ botonModificarDatos.addEventListener("click", function () {
     ape2Correcto = true;
   }
 
-  if (nac.length < 3 || nac.length > 15) {
+  if (nac.value.length < 3 || nac.value.length > 15) {
     avisoNacionalidad.textContent =
       "La nacionalidad debe contener entre 3 y 15 caracteres.";
     avisoNacionalidad.style.color = "red";
@@ -137,7 +140,7 @@ botonModificarDatos.addEventListener("click", function () {
     objetoPersona.nombre = nombre;
     objetoPersona.apellido1 = ape1;
     objetoPersona.apellido2 = ape2;
-    objetoPersona.nac = nac;
+    objetoPersona.nacionalidad = nac;
   }
 });
 
