@@ -4,6 +4,29 @@ function cargarCabecera() {
 }
 
 var objetoPersona
+var botonGuardar = document.getElementById('guardarTarjeta')
+var tarjeta10
+botonGuardar.addEventListener('click', function(){
+
+    var newNumero = document.getElementById('nTarjeta')
+    var newCvv = document.getElementById('cvv')
+    var newActiva = document.getElementById('cb')
+    console.log(newActiva.checked, newNumero.value, newCvv.value)
+    tarjeta10 = new Tarjeta(newNumero.value, newActiva.checked, newCvv.value);
+    objetoPersona.cuenta.addTarjeta(tarjeta10)
+
+    var fila = document.createElement("tr");
+    fila.innerHTML = `
+             <td>${objetoPersona.iban}</td>
+             <td>${objetoPersona.cuenta.tarjetas[objetoPersona.cuenta.tarjetas.length - 1].numero}</td>
+             <td>${objetoPersona.cuenta.tarjetas[objetoPersona.cuenta.tarjetas.length - 1].activa ? "Sí" : "No"}</td>
+         `;
+    tabla.appendChild(fila);
+
+    newNumero.value = newNumero.defaultValue;
+    newCvv.value = newCvv.defaultValue
+    newActiva.value = newActiva.defaultValue
+})
 
 function cargarInfo() {
     var persona = localStorage.getItem("persona")
@@ -34,15 +57,7 @@ function generarTabla() {
         dato1.activa = activa
         datos[index] = dato1
     }
-    console.log(objetoPersona)
-
-
-
-
-
     var tabla = document.getElementById("tablaCuentas");
-
-
     datos.forEach(function (dato) {
         var fila = document.createElement("tr");
         fila.innerHTML = `
@@ -53,3 +68,50 @@ function generarTabla() {
         tabla.appendChild(fila);
     });
 }
+
+// Definir la clase Persona
+class Persona {
+  nombre = "";
+  apellido1 = "";
+  apellido2 = "";
+  nacionalidad = "";
+
+  constructor(nombre, apellido1, apellido2, nacionalidad) {
+    this.nombre = nombre;
+    this.apellido1 = apellido1;
+    this.apellido2 = apellido2;
+    this.nacionalidad = nacionalidad;
+  }
+
+  addCuenta(c) {
+    this.cuenta = c;
+  }
+}
+
+class Cuenta {
+  iban = "";
+  saldo = 0;
+  tarjetas = [];
+
+  constructor(iban, saldo) {
+    this.iban = iban;
+    this.saldo = saldo;
+  }
+
+  addTarjeta(tarjeta) {
+    this.tarjetas.push(tarjeta);
+  }
+}
+
+class Tarjeta {
+    numero = 0;
+    activa = false;
+    cvv = 0;
+  
+    constructor(numero, activa, cvv) {
+      this.numero = numero;
+      this.activa = activa;
+      this.cvv = cvv;
+    }
+  
+  }
