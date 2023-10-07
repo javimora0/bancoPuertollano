@@ -62,7 +62,7 @@ function cargarInfo() {
 
 function cargarDatos() {
   if (objetoPersona == null) {
-    objetoPersona = new Persona("Caca", "Arabzabe", "php", "Española");
+    objetoPersona = new Persona("Fernando", "Aranzabe", "Servidor", "Turca");
     cuenta = new Cuenta("302583520349", 500);
     tarjeta1 = new Tarjeta(342342354254325, false, 758);
     tarjeta2 = new Tarjeta(374235786567672, true, 345);

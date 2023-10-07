@@ -5,19 +5,17 @@ function cargarCabecera() {
 
 var objetoPersona
 var botonGuardar = document.getElementById('guardarTarjeta')
-var tarjeta10
+var tarjeta1
 botonGuardar.addEventListener('click', function(){
-
     var newNumero = document.getElementById('nTarjeta')
     var newCvv = document.getElementById('cvv')
     var newActiva = document.getElementById('cb')
     console.log(newActiva.checked, newNumero.value, newCvv.value)
-    tarjeta10 = new Tarjeta(newNumero.value, newActiva.checked, newCvv.value);
-    objetoPersona.cuenta.addTarjeta(tarjeta10)
-
+    tarjeta1 = new Tarjeta(newNumero.value, newActiva.checked, newCvv.value);
+    objetoPersona.cuenta.tarjetas.push(tarjeta1)
     var fila = document.createElement("tr");
     fila.innerHTML = `
-             <td>${objetoPersona.iban}</td>
+             <td>${objetoPersona.cuenta.iban}</td>
              <td>${objetoPersona.cuenta.tarjetas[objetoPersona.cuenta.tarjetas.length - 1].numero}</td>
              <td>${objetoPersona.cuenta.tarjetas[objetoPersona.cuenta.tarjetas.length - 1].activa ? "Sí" : "No"}</td>
          `;
@@ -34,7 +32,10 @@ function cargarInfo() {
     parseInt(objetoPersona.cuenta.saldo)
 }
 
-
+function navegar() {
+    var objetoPasado = JSON.stringify(objetoPersona);
+    localStorage.setItem("persona", objetoPasado)
+}
 var datos = []
 
 
@@ -44,10 +45,10 @@ class Dato {
     activa = false
 }
 
+var tabla = document.getElementById("tablaCuentas");
+
 function generarTabla() {
-
     var ibanAuxiliar = objetoPersona.cuenta.iban
-
     for (let index = 0; index < objetoPersona.cuenta.tarjetas.length; index++) {
         var dato1 = new Dato();
         var nTarjeta = objetoPersona.cuenta.tarjetas[index].numero
@@ -57,7 +58,6 @@ function generarTabla() {
         dato1.activa = activa
         datos[index] = dato1
     }
-    var tabla = document.getElementById("tablaCuentas");
     datos.forEach(function (dato) {
         var fila = document.createElement("tr");
         fila.innerHTML = `
