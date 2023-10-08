@@ -117,7 +117,7 @@ class Cuenta {
 }
 
 class Tarjeta {
-    numero = 0;
+    numero = "";
     activa = false;
     cvv = 0;
 
