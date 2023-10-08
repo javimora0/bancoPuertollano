@@ -33,7 +33,7 @@ class Cuenta {
 }
 
 class Tarjeta {
-  numero = 0;
+  numero = "";
   activa = false;
   cvv = 0;
 
@@ -64,8 +64,8 @@ function cargarDatos() {
   if (objetoPersona == null) {
     objetoPersona = new Persona("Fernando", "Aranzabe", "Servidor", "Turca");
     cuenta = new Cuenta("302583520349", 500);
-    tarjeta1 = new Tarjeta(342342354254325, false, 758);
-    tarjeta2 = new Tarjeta(374235786567672, true, 345);
+    tarjeta1 = new Tarjeta("3423 42354 254325", false, 758);
+    tarjeta2 = new Tarjeta("3742 35786 567672", true, 345);
     cuenta.addTarjeta(tarjeta1);
     cuenta.addTarjeta(tarjeta2);
     objetoPersona.addCuenta(cuenta);

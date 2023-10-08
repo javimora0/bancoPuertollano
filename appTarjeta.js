@@ -6,21 +6,34 @@ function cargarCabecera() {
 var objetoPersona
 var botonGuardar = document.getElementById('guardarTarjeta')
 var tarjeta1
-botonGuardar.addEventListener('click', function(){
+botonGuardar.addEventListener('click', function () {
     var newNumero = document.getElementById('nTarjeta')
     var newCvv = document.getElementById('cvv')
     var newActiva = document.getElementById('cb')
-    console.log(newActiva.checked, newNumero.value, newCvv.value)
-    tarjeta1 = new Tarjeta(newNumero.value, newActiva.checked, newCvv.value);
-    objetoPersona.cuenta.tarjetas.push(tarjeta1)
-    var fila = document.createElement("tr");
-    fila.innerHTML = `
-             <td>${objetoPersona.cuenta.iban}</td>
-             <td>${objetoPersona.cuenta.tarjetas[objetoPersona.cuenta.tarjetas.length - 1].numero}</td>
-             <td>${objetoPersona.cuenta.tarjetas[objetoPersona.cuenta.tarjetas.length - 1].activa ? "Sí" : "No"}</td>
-         `;
-    tabla.appendChild(fila);
-
+    var msg = document.getElementById('mensaje')
+    const validarTarjeta = /^\d{4} \d{5} \d{6}$/;
+    const validarCvv = /^\d{3}$/;
+    if (validarTarjeta.test(newNumero.value) && validarCvv.test(newCvv.value)) {
+        tarjeta1 = new Tarjeta(newNumero.value, newActiva.checked, newCvv.value);
+        if (comprobarTarjetaRepetida(tarjeta1)) {
+            msg.textContent = 'Tarjeta ya añadida'
+            msg.style.color = 'red'
+        }else{
+            objetoPersona.cuenta.tarjetas.push(tarjeta1)
+            var fila = document.createElement("tr");
+            fila.innerHTML = `
+                 <td>${objetoPersona.cuenta.iban}</td>
+                 <td>${objetoPersona.cuenta.tarjetas[objetoPersona.cuenta.tarjetas.length - 1].numero}</td>
+                 <td>${objetoPersona.cuenta.tarjetas[objetoPersona.cuenta.tarjetas.length - 1].activa ? "Sí" : "No"}</td>
+             `;
+            tabla.appendChild(fila);
+            msg.textContent = 'Tarjeta añadida correctamente'
+            msg.style.color = 'green'
+        }
+    }else {
+        msg.textContent = 'Número de tarjeta o cvv incorrecto'
+        msg.style.color = 'red'
+    }
     newNumero.value = newNumero.defaultValue;
     newCvv.value = newCvv.defaultValue
     newActiva.value = newActiva.defaultValue
@@ -71,47 +84,57 @@ function generarTabla() {
 
 // Definir la clase Persona
 class Persona {
-  nombre = "";
-  apellido1 = "";
-  apellido2 = "";
-  nacionalidad = "";
+    nombre = "";
+    apellido1 = "";
+    apellido2 = "";
+    nacionalidad = "";
 
-  constructor(nombre, apellido1, apellido2, nacionalidad) {
-    this.nombre = nombre;
-    this.apellido1 = apellido1;
-    this.apellido2 = apellido2;
-    this.nacionalidad = nacionalidad;
-  }
+    constructor(nombre, apellido1, apellido2, nacionalidad) {
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.nacionalidad = nacionalidad;
+    }
 
-  addCuenta(c) {
-    this.cuenta = c;
-  }
+    addCuenta(c) {
+        this.cuenta = c;
+    }
 }
 
 class Cuenta {
-  iban = "";
-  saldo = 0;
-  tarjetas = [];
+    iban = "";
+    saldo = 0;
+    tarjetas = [];
 
-  constructor(iban, saldo) {
-    this.iban = iban;
-    this.saldo = saldo;
-  }
+    constructor(iban, saldo) {
+        this.iban = iban;
+        this.saldo = saldo;
+    }
 
-  addTarjeta(tarjeta) {
-    this.tarjetas.push(tarjeta);
-  }
+    addTarjeta(tarjeta) {
+        this.tarjetas.push(tarjeta);
+    }
 }
 
 class Tarjeta {
-    numero = 0;
+    numero = "";
     activa = false;
     cvv = 0;
-  
+
     constructor(numero, activa, cvv) {
-      this.numero = numero;
-      this.activa = activa;
-      this.cvv = cvv;
+        this.numero = numero;
+        this.activa = activa;
+        this.cvv = cvv;
     }
-  
-  }
+
+}
+
+function comprobarTarjetaRepetida(tarjeta) {
+    var esRepetida = false;
+    for (let i = 0; i < objetoPersona.cuenta.tarjetas.length; i++) {
+        if (tarjeta.numero == objetoPersona.cuenta.tarjetas[i].numero) {
+            esRepetida = true;
+        }
+    }
+    return esRepetida;
+}
